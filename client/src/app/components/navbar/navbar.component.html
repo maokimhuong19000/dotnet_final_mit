@@ -1,0 +1,72 @@
+<div>
+  <mat-toolbar color="primary" style="padding: 10px 50px;">
+    <!-- Menu icon button -->
+    <button mat-icon-button aria-label="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- App title linked to home -->
+    <a routerLink="/" class="app-title"
+      style="margin-left: 16px; color: white; text-decoration: none; font-weight: 600;">
+      Dashboard
+    </a>
+
+    <!-- Spacer to push user info or login/register to right -->
+    <span style="flex: 1 1 auto;"></span>
+
+    <!-- If logged in, show user info -->
+    <ng-container *ngIf="isLoggedIn(); else loggedOut">
+      <ng-container *ngIf="authService.getUserDetail() as userDetail">
+        <div class="user-info" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+          <!-- Avatar circle with initial -->
+          <div style="
+          background-color: #ef4444; 
+          color: white; 
+          font-weight: bold; 
+          width: 36px; 
+          height: 36px; 
+          border-radius: 50%; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center;
+          text-transform: uppercase;
+        ">
+            {{ userDetail.fullName[0] }}
+          </div>
+
+          <!-- Name and roles -->
+          <div style="color: white; display: flex; flex-direction: column; line-height: 1;">
+            <span style="font-weight: 600;">{{ userDetail.fullName }}</span>
+            <small style="font-size: 12px;">{{ userDetail.roles }}</small>
+          </div>
+
+          <!-- Dropdown menu trigger -->
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu" style="color: white;">
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+
+          <!-- User dropdown menu -->
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/account', userDetail.id]">
+              <mat-icon>account_circle</mat-icon>
+              <span>View Profile</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- Template for logged out state -->
+    <ng-template #loggedOut>
+      <div style="display: flex; gap: 16px;">
+        <a mat-button routerLink="/login">Login</a>
+        <a mat-button routerLink="/register">Register</a>
+      </div>
+    </ng-template>
+  </mat-toolbar>
+
+</div>
