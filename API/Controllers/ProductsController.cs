@@ -5,16 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly AppDbContext _context;
-
         public ProductsController(IMapper mapper, AppDbContext context)
         {
             _mapper = mapper;

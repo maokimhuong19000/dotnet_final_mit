@@ -28,32 +28,42 @@ export class AuthService {
       );
   }
 
+  register(data: { username: string; email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}account/register`, data);
+  }
+
   getUserDetail = () => {
     const token = this.getToken();
-    if (!token) return null;
+    if (!token) {
+      return null;
+    }
     const decodedToken: any = jwtDecode(token);
-    const userDetail = {
-      id: decodedToken.nameid,
-      fullName: decodedToken.name,
-      email: decodedToken.email,
-      roles: decodedToken.role || [],
-    };
-
-    return userDetail;
+    return {
+          id: decodedToken.nameid,
+          fullName: decodedToken.name,
+          email: decodedToken.email,
+          roles: decodedToken.role || [],
+        };
   };
 
   isLoggedIn = (): boolean => {
     const token = this.getToken();
-    if (!token) return false;
+    if (!token) {
+      return false;
+    }
     return !this.isTokenExpired();
   };
 
   private isTokenExpired() {
     const token = this.getToken();
-    if (!token) return true;
+    if (!token) {
+      return true;
+    }
     const decoded = jwtDecode(token);
     const isTokenExpired = Date.now() >= decoded['exp']! * 1000;
-    if (isTokenExpired) this.logout();
+    if (isTokenExpired) {
+      this.logout();
+    }
     return isTokenExpired;
   }
 
