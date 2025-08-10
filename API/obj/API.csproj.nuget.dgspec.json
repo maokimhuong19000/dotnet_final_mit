@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dev1/MAO KIMHUONG/Other Document/dotnetangular/API/API.csproj": {}
+    "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj": {}
   },
   "projects": {
-    "/Users/dev1/MAO KIMHUONG/Other Document/dotnetangular/API/API.csproj": {
+    "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dev1/MAO KIMHUONG/Other Document/dotnetangular/API/API.csproj",
+        "projectUniqueName": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/dev1/MAO KIMHUONG/Other Document/dotnetangular/API/API.csproj",
-        "packagesPath": "/Users/dev1/.nuget/packages/",
-        "outputPath": "/Users/dev1/MAO KIMHUONG/Other Document/dotnetangular/API/obj/",
+        "projectPath": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj",
+        "packagesPath": "/Users/maokimhuong/.nuget/packages/",
+        "outputPath": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dev1/.nuget/NuGet/NuGet.Config"
+          "/Users/maokimhuong/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -44,27 +44,39 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -90,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
