@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj": {}
+    "/var/www/html/posmicroservice/dotnet_final_mit/API/API.csproj": {}
   },
   "projects": {
-    "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj": {
+    "/var/www/html/posmicroservice/dotnet_final_mit/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj",
+        "projectUniqueName": "/var/www/html/posmicroservice/dotnet_final_mit/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/API.csproj",
-        "packagesPath": "/Users/maokimhuong/.nuget/packages/",
-        "outputPath": "/Users/maokimhuong/DATA/04-Master/02-Courese Dotnet/dotnet_final_mit/API/obj/",
+        "projectPath": "/var/www/html/posmicroservice/dotnet_final_mit/API/API.csproj",
+        "packagesPath": "/home/sokha/.nuget/packages/",
+        "outputPath": "/var/www/html/posmicroservice/dotnet_final_mit/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/maokimhuong/.nuget/NuGet/NuGet.Config"
+          "/home/sokha/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -32,17 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -102,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.118/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
