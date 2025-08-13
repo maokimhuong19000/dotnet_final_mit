@@ -11,7 +11,6 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController:ControllerBase
@@ -29,7 +28,7 @@ namespace API.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
-            
+
         }
 
         // api/account/register
@@ -38,33 +37,47 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register(RegisterDto registerDto)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var user = new AppUser{
-                Email = registerDto.Email,
-                FullName = registerDto.FullName,
-                UserName = registerDto.Email
-            };
-
-            var result = await _userManager.CreateAsync(user,registerDto.Password);
-
-            if(!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
-            
-            if(registerDto.Roles is null){
-                    await _userManager.AddToRoleAsync(user,"User");
-            }else{
-                foreach(var role in registerDto.Roles)
+            if (!ModelState.IsValid)
                 {
-                    await _userManager.AddToRoleAsync(user,role);
+                    return BadRequest(ModelState);
                 }
-            }
-    
+
+                var user = new AppUser
+                {
+                    Email = registerDto.Email,
+                    FullName = registerDto.FullName,
+                    UserName = registerDto.Email
+                };
+
+                var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+                if (!result.Succeeded)
+                {
+                    return BadRequest(result.Errors);
+                }
+
+                // If roles are null or empty, default to "User"
+                var rolesToAssign = (registerDto.Roles == null || !registerDto.Roles.Any())
+                    ? new List<string> { "User" }
+                    : registerDto.Roles;
+
+                foreach (var role in rolesToAssign)
+                {
+                    var normalizedRole = role?.Trim();
+                    if (string.IsNullOrWhiteSpace(normalizedRole) || normalizedRole.Equals("string", StringComparison.OrdinalIgnoreCase))
+                    {
+                        normalizedRole = "User";
+                    }
+
+                    // Ensure the role exists
+                    if (!await _roleManager.RoleExistsAsync(normalizedRole))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(normalizedRole));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, normalizedRole);
+                }
+
 
         return Ok(new AuthResponseDto{
             IsSuccess = true,
@@ -103,7 +116,7 @@ namespace API.Controllers
                 });
             }
 
-            
+
             var token = GenerateToken(user);
 
             return Ok(new AuthResponseDto{
@@ -118,13 +131,13 @@ namespace API.Controllers
 
         private string GenerateToken(AppUser user){
             var tokenHandler = new JwtSecurityTokenHandler();
-            
+
             var key = Encoding.ASCII
             .GetBytes(_configuration.GetSection("JWTSetting").GetSection("securityKey").Value!);
 
             var roles = _userManager.GetRolesAsync(user).Result;
 
-            List<Claim> claims = 
+            List<Claim> claims =
             [
                 new (JwtRegisteredClaimNames.Email,user.Email??""),
                 new (JwtRegisteredClaimNames.Name,user.FullName??""),
@@ -155,7 +168,7 @@ namespace API.Controllers
             var token  = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
-           
+
 
         }
 

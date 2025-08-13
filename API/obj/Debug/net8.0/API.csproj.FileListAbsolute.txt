@@ -168,4 +168,7 @@
 /var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/API.pdb
 /var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/API.genruntimeconfig.cache
 /var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/ref/API.dll
-/var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/API.csproj.CopyComplete
+/var/www/html/posmicroservice/dotnet_final_mit/API/bin/Debug/net8.0/API.staticwebassets.endpoints.json
+/var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/staticwebassets.build.endpoints.json
+/var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/var/www/html/posmicroservice/dotnet_final_mit/API/obj/Debug/net8.0/API.csproj.Up2Date
